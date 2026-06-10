@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Удалить заказ — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">Удалить заказ</h1>
+<div class="content-card">
+    <p>Вы уверены, что хотите удалить <strong>Заказ №{{ object.pk }}</strong> ({{ object.customer_name }})?</p>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger"> Да, удалить</button>
+        <a href="{% url 'order_list' %}" class="btn"> Отмена</a>
+    </form>
+</div>
+{% endblock %}

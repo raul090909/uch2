@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Все товары — SportFuel{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Все товары</h1>
+<div class="content-card">
+    <p>Полный каталог нашего магазина. Доступно <strong>1 340 позиций</strong> спортивного питания.</p>
+    <br>
+    <p> Удобнее искать по <a href="{% url 'categories' %}" style="color:#f5a623;">категориям</a>.</p>
+    <br>
+    <p><strong>Популярные товары:</strong></p>
+    <p> Optimum Nutrition Gold Standard Whey 2,27 кг — 6 490 ₽</p>
+    <p> MyProtein Impact Whey Protein 2,5 кг — 4 990 ₽</p>
+    <p> BioTech USA Hyper Mass 5000 4 кг — 3 890 ₽</p>
+    <p> Dymatize ISO-100 2,27 кг — 7 290 ₽</p>
+    <p> NOW Foods BCAA 2:1:1 240 капсул — 1 490 ₽</p>
+    <p> Creatine Monohydrate 500 г — 890 ₽</p>
+    <p> Omega-3 1000 мг 120 капсул — 790 ₽</p>
+    <br>
+    <p>Понравился товар? Добавьте его в <a href="{% url 'cart' %}" style="color:#f5a623;"> корзину</a>.</p>
+</div>
+{% endblock %}

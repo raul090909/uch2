@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Продукт — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">{% if object %}Редактировать продукт{% else %}Добавить продукт{% endif %}</h1>
+<div class="content-card">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}<div class="form-error">{{ field.errors }}</div>{% endif %}
+        </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn"> Сохранить</button>
+        <a href="{% url 'product_list' %}" class="btn">← Отмена</a>
+    </form>
+</div>
+{% endblock %}

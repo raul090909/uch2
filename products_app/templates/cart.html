@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина — SportFuel{% endblock %}
+
+{% block content %}
+<h1 class="page-title"> Корзина</h1>
+<div class="content-card">
+    <p>Ваша корзина пока пуста.</p>
+    <br>
+    <p>Перейдите в <a href="{% url 'all_products' %}" style="color:#f5a623;">каталог товаров</a>, чтобы добавить спортивное питание.</p>
+    <br>
+    <hr style="border:none; border-top:1px solid #eee; margin: 20px 0;">
+    <p style="color:#999; font-size:13px;">Добавленные товары появятся здесь. Вы сможете изменить количество, удалить позиции и оформить заказ с доставкой.</p>
+</div>
+{% endblock %}

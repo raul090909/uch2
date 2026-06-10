@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Товары — ShopMarket{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Товары</h1>
+<div class="content-card">
+    <p>В нашем магазине представлено более <strong>5000 товаров</strong> из различных категорий.</p>
+    <p>Выберите интересующий вас раздел:</p>
+    <br>
+    <p> <a href="{% url 'categories' %}" style="color:#e94560; font-size:16px;">Категории товаров</a> — просматривайте товары по разделам</p>
+    <br>
+    <p> <a href="{% url 'all_products' %}" style="color:#e94560; font-size:16px;">Все товары</a> — полный каталог без фильтров</p>
+    <br>
+    <p> Добавляйте понравившиеся товары в <a href="{% url 'cart' %}" style="color:#e94560;">корзину</a> и оформляйте заказ в пару кликов.</p>
+</div>
+{% endblock %}

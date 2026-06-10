@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ brand.name }} — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ brand.name }}</h1>
+<div class="content-card">
+    {% if brand.logo %}
+        <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" class="detail-img">
+    {% endif %}
+    <p><strong>Страна:</strong> {{ brand.country }}</p>
+    <p><strong>Описание:</strong> {{ brand.description }}</p>
+    <br>
+    <a href="{% url 'brand_update' brand.pk %}" class="btn btn-warning"> Редактировать</a>
+    <a href="{% url 'brand_delete' brand.pk %}" class="btn btn-danger"> Удалить</a>
+    <a href="{% url 'brand_list' %}" class="btn"> Назад</a>
+</div>
+{% endblock %}

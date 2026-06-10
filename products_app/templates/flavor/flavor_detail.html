@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ flavor.name }} — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ flavor.name }}</h1>
+<div class="content-card">
+    <p><strong>Вкус:</strong> {{ flavor.name }}</p>
+    <br>
+    <a href="{% url 'flavor_update' flavor.pk %}" class="btn btn-warning"> Редактировать</a>
+    <a href="{% url 'flavor_delete' flavor.pk %}" class="btn btn-danger"> Удалить</a>
+    <a href="{% url 'flavor_list' %}" class="btn"> Назад</a>
+</div>
+{% endblock %}

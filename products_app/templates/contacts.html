@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты — SportFuel{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Контакты</h1>
+<div class="content-card">
+    <p><strong> Телефон:</strong> +7 (800) 555-35-35 (бесплатно)</p>
+    <p><strong> Email:</strong> support@sportfuel.ru</p>
+    <p><strong> Telegram:</strong> @sportfuel_support</p>
+    <p><strong> Часы работы:</strong> Пн–Пт с 9:00 до 20:00, Сб с 10:00 до 18:00</p>
+    <br>
+    <p>По вопросам оптовых закупок обращайтесь на почту: <strong>wholesale@sportfuel.ru</strong></p>
+    <p>Для прессы и СМИ: <strong>press@sportfuel.ru</strong></p>
+    <br>
+    <p>Хотите приехать лично? Узнайте <a href="{% url 'how_to_find' %}" style="color:#e94560">как нас найти</a>.</p>
+</div>
+{% endblock %}

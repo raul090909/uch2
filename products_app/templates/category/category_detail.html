@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ category.name }} — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ category.name }}</h1>
+<div class="content-card">
+    <p><strong>Описание:</strong> {{ category.description|default:"—" }}</p>
+    <br>
+    <a href="{% url 'category_update' category.pk %}" class="btn btn-warning"> Редактировать</a>
+    <a href="{% url 'category_delete' category.pk %}" class="btn btn-danger"> Удалить</a>
+    <a href="{% url 'category_list' %}" class="btn"> Назад</a>
+</div>
+{% endblock %}
