@@ -1,0 +1,36 @@
+{% load static %}
+<header>
+<nav>
+    <a href="{% url 'home' %}" class="nav-logo"> SportFuel</a>
+    <a href="{% url 'home' %}">Главная</a>
+
+    <div class="dropdown">
+        <a href="{% url 'about' %}">О компании</a>
+        <div class="dropdown-menu">
+            <a href="{% url 'contacts' %}">Контакты</a>
+            <a href="{% url 'how_to_find' %}">Как нас найти</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="{% url 'product_list' %}">Товары</a>
+        <div class="dropdown-menu">
+            <a href="{% url 'product_list' %}">Все товары</a>
+            <a href="{% url 'product_create' %}">Добавить товар</a>
+            <a href="{% url 'category_list' %}">Категории</a>
+            <a href="{% url 'brand_list' %}">Бренды</a>
+            <a href="{% url 'flavor_list' %}">Вкусы</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="{% url 'order_list' %}">Заказы</a>
+        <div class="dropdown-menu">
+            <a href="{% url 'order_list' %}">Все заказы</a>
+            <a href="{% url 'order_create' %}">Новый заказ</a>
+        </div>
+    </div>
+
+    <a href="{% url 'cart' %}" class="nav-cart"> Корзина</a>
+</nav>
+</header>
