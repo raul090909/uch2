@@ -3,7 +3,9 @@
 {% block content %}
 <h1 class="page-title">Вкусы</h1>
 <div class="content-card">
+    {% if user.is_authenticated %}
     <a href="{% url 'flavor_create' %}" class="btn">+ Добавить вкус</a>
+    {% endif %}
     <table class="crud-table">
         <thead>
             <tr>
@@ -16,9 +18,11 @@
             <tr>
                 <td>{{ flavor.name }}</td>
                 <td>
-                    <a href="{% url 'flavor_detail' flavor.pk %}" class="btn btn-info"></a>
-                    <a href="{% url 'flavor_update' flavor.pk %}" class="btn btn-warning"></a>
-                    <a href="{% url 'flavor_delete' flavor.pk %}" class="btn btn-danger"></a>
+                    <a href="{% url 'flavor_detail' flavor.pk %}" class="btn btn-info">👁</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'flavor_update' flavor.pk %}" class="btn btn-warning">✏️</a>
+                    <a href="{% url 'flavor_delete' flavor.pk %}" class="btn btn-danger">🗑</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}

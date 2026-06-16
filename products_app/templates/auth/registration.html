@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_name %}Регистрация — SportFuel{% endblock %}
+
+{% block content %}
+        <div class="page-head">
+            <h1>Регистрация</h1>
+        </div>
+        <div class="card narrow">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    <a href="{% url 'home' %}" class="btn btn-light">Назад</a>
+                </div>
+            </form>
+            <p class="muted" style="margin-top: 18px;">
+                Уже есть аккаунт? <a href="{% url 'login_page' %}">Авторизоваться</a>
+            </p>
+        </div>
+{% endblock %}

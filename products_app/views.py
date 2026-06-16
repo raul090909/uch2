@@ -2,7 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Product, Brand, Category, Order, Flavor
-
+from .forms import *
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.decorators import method_decorator
+from django.shortcuts import redirect
 
 
 def home_view(request):
@@ -173,3 +177,36 @@ class FlavorDeleteView(DeleteView):
     model = Flavor
     template_name = 'flavor/flavor_confirm_delete.html'
     success_url = reverse_lazy('flavor_list')
+
+def login_user(request):
+    if request.method == "POST":
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('home')
+    else:
+        form = LoginForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'auth/login.html', context)
+
+def registration_user(request):
+    if request.method == "POST":
+        form = RegistrationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.save())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('home')
+    else:
+        form = RegistrationForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'auth/registration.html', context)
+def logout_user(request):
+    logout(request)
+    return redirect('home')

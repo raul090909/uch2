@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'products_app'
+    'products_app',
+    'shop_api',
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'static')
 ]
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S.%f%z'
+}
+
+LOGIN_URL = '/login/'

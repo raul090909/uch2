@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">Регистрация</h1>
+<div class="content-card">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}<div class="form-error">{{ field.errors }}</div>{% endif %}
+        </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn">Зарегистрироваться</button>
+        <a href="{% url 'login_page' %}" class="btn">Уже есть аккаунт</a>
+    </form>
+</div>
+{% endblock %}

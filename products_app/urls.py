@@ -40,4 +40,8 @@ urlpatterns = [
     path('flavor/create/', FlavorCreateView.as_view(), name='flavor_create'),
     path('flavor/<int:pk>/update/', FlavorUpdateView.as_view(), name='flavor_update'),
     path('flavor/<int:pk>/delete/', FlavorDeleteView.as_view(), name='flavor_delete'),
+
+    path('login/', login_user, name='login_page'),
+    path('registration/', registration_user, name='registration_page'),
+    path('logout/', logout_user, name='logout_page'),
 ]

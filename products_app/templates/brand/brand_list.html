@@ -3,7 +3,9 @@
 {% block content %}
 <h1 class="page-title">Бренды</h1>
 <div class="content-card">
+    {% if user.is_authenticated %}
     <a href="{% url 'brand_create' %}" class="btn">+ Добавить бренд</a>
+    {% endif %}
     <table class="crud-table">
         <thead>
             <tr>
@@ -26,9 +28,11 @@
                 <td>{{ brand.name }}</td>
                 <td>{{ brand.country }}</td>
                 <td>
-                    <a href="{% url 'brand_detail' brand.pk %}" class="btn btn-info"></a>
-                    <a href="{% url 'brand_update' brand.pk %}" class="btn btn-warning"></a>
-                    <a href="{% url 'brand_delete' brand.pk %}" class="btn btn-danger"></a>
+                    <a href="{% url 'brand_detail' brand.pk %}" class="btn btn-info">👁</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'brand_update' brand.pk %}" class="btn btn-warning">✏️</a>
+                    <a href="{% url 'brand_delete' brand.pk %}" class="btn btn-danger">🗑</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}
