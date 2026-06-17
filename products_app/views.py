@@ -7,7 +7,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
-
+from basket.forms import BasketAddProductForm
 
 def home_view(request):
     return render(request, 'home.html')
@@ -44,6 +44,11 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'product/product_detail.html'
     context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
 
 class ProductCreateView(CreateView):
     model = Product

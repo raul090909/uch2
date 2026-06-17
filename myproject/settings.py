@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products_app',
     'shop_api',
-    'rest_framework'
-
+    'rest_framework',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +139,6 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_URL = '/login/'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+BASKET_SESSION_ID = 'basket'

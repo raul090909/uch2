@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Мои заказы — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title">Мои заказы</h1>
+<div class="content-card">
+    {% if orders %}
+    <table class="crud-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата</th>
+                <th>Имя</th>
+                <th>Адрес доставки</th>
+                <th>Способ доставки</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.pk }}</td>
+                <td>{{ order.date_create|date:"d.m.Y H:i" }}</td>
+                <td>{{ order.buyer_firstname }} {{ order.buyer_name }}</td>
+                <td>{{ order.delivery_address }}</td>
+                <td>{{ order.get_delivery_type_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>У вас пока нет заказов.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -15,6 +15,13 @@
     <p><strong>Описание:</strong> {{ product.description }}</p>
     <p><strong>Дата добавления:</strong> {{ product.create_date }}</p>
     <br>
+{% if request.user.is_authenticated %}
+<form method="post" action="{% url 'basket_add' product.pk %}">
+    {% csrf_token %}
+    {{ form_basket }}
+    <button type="submit" class="btn"> Добавить в корзину</button>
+</form>
+{% endif %}
     <a href="{% url 'product_update' product.pk %}" class="btn btn-warning"> Редактировать</a>
     <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger"> Удалить</a>
     <a href="{% url 'product_list' %}" class="btn"> Назад</a>

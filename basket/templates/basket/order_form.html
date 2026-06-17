@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Создание заказа — SportFuel{% endblock %}
+{% block content %}
+<div class="content-card">
+    <h1 class="page-title">Создание заказа</h1>
+    <form action="{% url 'basket_buy' %}" method="post">
+        {% csrf_token %}
+        {{ form_order.as_div }}
+        <br>
+        <button type="submit" class="btn">Подтвердить заказ</button>
+        <a href="{% url 'basket_detail' %}" class="btn">Обратно к корзине</a>
+    </form>
+</div>
+{% endblock %}

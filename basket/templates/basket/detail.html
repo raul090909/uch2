@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Ваша корзина — SportFuel{% endblock %}
+{% block content %}
+<div class="content-card">
+    <h1 class="page-title">Корзина</h1>
+    <table class="crud-table">
+        <thead>
+            <tr>
+                <th>Изображение</th>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена за шт.</th>
+                <th>Цена за позицию</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in basket %}
+            {% with item.product as product %}
+            <tr>
+                <td>
+                    {% if product.photo %}
+                        <img src="{{ product.photo.url }}" class="table-img">
+                    {% endif %}
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ item.count }} шт.</td>
+                <td>{{ item.price }} ₽</td>
+                <td>{{ item.total_price }} ₽</td>
+                <td>
+                    <a href="{% url 'basket_remove' product.pk %}" class="btn btn-danger">Убрать из корзины</a>
+                </td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr>
+                <td colspan="2">Всего:</td>
+                <td>{{ basket|length }} шт.</td>
+                <td colspan="2">{{ basket.get_total_price }} ₽</td>
+                <td><a href="{% url 'basket_clear' %}" class="btn btn-danger">Очистить корзину</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'product_list' %}" class="btn">Назад к каталогу</a>
+    {% if basket|length > 0 %}
+    <a href="{% url 'order_open' %}" class="btn">Купить</a>
+    {% endif %}
+</div>
+{% endblock %}

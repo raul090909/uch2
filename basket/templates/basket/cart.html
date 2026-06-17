@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Корзина — SportFuel{% endblock %}
+{% block content %}
+<h1 class="page-title"> Корзина</h1>
+<div class="content-card">
+    {% if cart|length %}
+    <table class="crud-table">
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.price }} ₽</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total }} ₽</td>
+                <td>
+                    <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger">🗑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <p><strong>Итого: {{ cart.get_total }} ₽</strong></p>
+    <br>
+    <a href="{% url 'create_order' %}" class="btn">Оформить заказ</a>
+    {% else %}
+    <p>Корзина пуста.</p>
+    <a href="{% url 'product_list' %}" class="btn">Перейти к товарам</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -32,6 +32,6 @@ class LoginForm(AuthenticationForm):
         min_length=2
     )
     password = forms.CharField(
-        label="Придумайте пароль",
+        label="Введите пароль",
         widget=forms.PasswordInput(attrs={'class':'form-control',}),
     )
